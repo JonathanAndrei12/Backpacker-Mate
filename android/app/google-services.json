@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "960526736695",
+    "project_id": "backpacker-mate",
+    "storage_bucket": "backpacker-mate.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:960526736695:android:49dad44d6e71d8384b8eb2",
+        "android_client_info": {
+          "package_name": "com.example.backpacker_mate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "960526736695-j7lek8ubjce29nqno624fuari8661pdt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxFYcdrgGKQW31ujtwe4b7_kQM9MCfEdY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "960526736695-j7lek8ubjce29nqno624fuari8661pdt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
