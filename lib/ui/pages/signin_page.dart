@@ -34,6 +34,7 @@ class _SignInPageState extends State<SignInPage> {
                 color: Colors.transparent,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       "Sign In",
@@ -42,7 +43,6 @@ class _SignInPageState extends State<SignInPage> {
                           fontFamily: "Arial",
                           fontSize: 30),
                     ),
-                    SizedBox(height: 10),
                     TextFormField(
                       keyboardType: TextInputType.emailAddress,
                       controller: ctrlEmail,
@@ -62,7 +62,9 @@ class _SignInPageState extends State<SignInPage> {
                           hintText: "Your Password",),
                     ),
                     SizedBox(height: 10),
-                    RaisedButton.icon(
+                    Container(
+                      alignment: Alignment(0, 0),
+                      child: RaisedButton.icon(
                         icon: Icon(Icons.cloud_upload),
                         label: Text("Sign Up"),
                         textColor: Colors.white,
@@ -104,18 +106,24 @@ class _SignInPageState extends State<SignInPage> {
                               );
                             }
                           }
-                        }),
-                    RichText(
-                      text: TextSpan(
+                        }
+                      ),
+                    ),
+                    Container(
+                      alignment: Alignment(0, 0),
+                      child: RichText(
+                        text: TextSpan(
                           text: "Not registered yet? Sign up.",
                           style: TextStyle(color: Colors.blue),
                           recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              Navigator.pushReplacement(context,
-                                  MaterialPageRoute(builder: (context) {
-                                return SignUpPages();
-                              }));
-                            }),
+                          ..onTap = () {
+                            Navigator.pushReplacement(context,
+                                MaterialPageRoute(builder: (context) {
+                              return SignUpPages();
+                            }));
+                          }
+                        ),
+                      ),
                     )
                   ],
                 ),

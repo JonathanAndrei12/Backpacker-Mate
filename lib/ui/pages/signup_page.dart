@@ -37,6 +37,7 @@ class _SignUpPagesState extends State<SignUpPages> {
                 margin: EdgeInsets.fromLTRB(10, 120, 10, 150),
                 color: Colors.transparent,
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Text(
@@ -46,7 +47,6 @@ class _SignUpPagesState extends State<SignUpPages> {
                           fontFamily: "Arial",
                           fontSize: 30),
                     ),
-                    SizedBox(height: 10),
                     TextFormField(
                       controller: ctrlName,
                       decoration: InputDecoration(
@@ -86,7 +86,9 @@ class _SignUpPagesState extends State<SignUpPages> {
                       ),
                     ),
                     SizedBox(height: 10),
-                    RaisedButton.icon(
+                    Container(
+                      alignment: Alignment(0, 0),
+                      child: RaisedButton.icon(
                         icon: Icon(Icons.cloud_upload),
                         label: Text("Sign Up"),
                         textColor: Colors.white,
@@ -147,18 +149,24 @@ class _SignUpPagesState extends State<SignUpPages> {
                               );
                             }
                           }
-                        }),
-                    RichText(
-                      text: TextSpan(
+                        }
+                      ),
+                    ),
+                    Container(
+                      alignment: Alignment(0, 0),
+                      child: RichText(
+                        text: TextSpan(
                           text: "Already registered? Sign in.",
                           style: TextStyle(color: Colors.blue),
                           recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              Navigator.pushReplacement(context,
-                                  MaterialPageRoute(builder: (context) {
-                                return SignInPage();
-                              }));
-                            }),
+                          ..onTap = () {
+                            Navigator.pushReplacement(context,
+                                MaterialPageRoute(builder: (context) {
+                              return SignInPage();
+                            }));
+                          }
+                        ),
+                      ),
                     )
                   ],
                 ),
