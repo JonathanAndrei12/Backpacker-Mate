@@ -48,9 +48,13 @@ class _AccountPageState extends State<AccountPage> {
         actions: [
           CircleAvatar(
             radius: 27,
-            backgroundImage: NetworkImage(
-              img ??
-                "https://firebasestorage.googleapis.com/v0/b/backpacker-mate.appspot.com/o/default%2Flogo.png?alt=media&token=4884ad3d-6466-4231-ad81-f6022290041a",
+            backgroundColor: Colors.white,
+            child: CircleAvatar(
+              radius: 26,
+              backgroundImage: NetworkImage(
+                img ??
+                  "https://firebasestorage.googleapis.com/v0/b/backpacker-mate.appspot.com/o/default%2Flogo.png?alt=media&token=4884ad3d-6466-4231-ad81-f6022290041a",
+              ),
             ),
           )
         ],
