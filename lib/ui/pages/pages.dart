@@ -18,3 +18,4 @@ part 'account_page.dart';
 part 'historymenu_page.dart';
 part 'hotelrec_page.dart';
 part 'budgetman_page.dart';
+part 'budgetman_result.dart';
