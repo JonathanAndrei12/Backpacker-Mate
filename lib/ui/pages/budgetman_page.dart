@@ -43,7 +43,7 @@ class _BudgetManagementPageState extends State<BudgetManagementPage> {
                             size: 120.0,
                           ),
                         ),
-                        SizedBox(height: 30),
+                        SizedBox(height: 50),
                         Text(
                           "Budget Name",
                           style: TextStyle(
@@ -75,24 +75,29 @@ class _BudgetManagementPageState extends State<BudgetManagementPage> {
                             hintText: "(Ex:2000000)",
                           ),
                         ),
-                        RaisedButton(
-                          padding: EdgeInsets.all(15),
-                          child: Container(
-                            width: 100,
-                            child: Text("Submit", textAlign: TextAlign.center),
-                          ),
-                          textColor: Colors.white,
-                          color: Colors.blue,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          onPressed: () {
-                            Navigator.push(context,
-                                MaterialPageRoute(builder: (context) {
-                              return BudgetManagementResult();
-                            }));
-                          },
-                        ),
+                        SizedBox(height: 80),
+                        Align(
+                            alignment: Alignment.bottomCenter,
+                            child: RaisedButton(
+                              elevation: 5,
+                              padding: EdgeInsets.all(15),
+                              child: Container(
+                                width: 100,
+                                child:
+                                    Text("Submit", textAlign: TextAlign.center),
+                              ),
+                              textColor: Colors.white,
+                              color: Colors.blue,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              onPressed: () {
+                                Navigator.push(context,
+                                    MaterialPageRoute(builder: (context) {
+                                  return BudgetManagementResult();
+                                }));
+                              },
+                            ))
                       ]))
             ],
           )),
