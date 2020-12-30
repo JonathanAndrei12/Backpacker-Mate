@@ -8,6 +8,7 @@ class BudgetManagementPage extends StatefulWidget {
 class _BudgetManagementPageState extends State<BudgetManagementPage> {
   final ctrlBudgetName = TextEditingController();
   final ctrlBudgetAmount = TextEditingController();
+  bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -69,6 +70,7 @@ class _BudgetManagementPageState extends State<BudgetManagementPage> {
                         ),
                         SizedBox(height: 1),
                         TextFormField(
+                          keyboardType: TextInputType.number,
                           controller: ctrlBudgetAmount,
                           decoration: InputDecoration(
                             //KALO MAU ICON PASANG DISINI
@@ -83,18 +85,66 @@ class _BudgetManagementPageState extends State<BudgetManagementPage> {
                               padding: EdgeInsets.all(15),
                               child: Container(
                                 width: 100,
-                                child:
-                                    Text("Submit", textAlign: TextAlign.center),
+                                child: Text("Add Budget",
+                                    textAlign: TextAlign.center),
                               ),
                               textColor: Colors.white,
                               color: Colors.blue,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20),
                               ),
-                              onPressed: () {
+                              onPressed: () async {
+                                // double total =
+                                //     double.parse("ctrlBudgetAmount.text");
+                                // double makan = 20;
+
+                                if (ctrlBudgetName.text == "" ||
+                                    ctrlBudgetAmount.text == "") {
+                                  Fluttertoast.showToast(
+                                    msg: "Please Fill All Field!",
+                                    toastLength: Toast.LENGTH_LONG,
+                                    gravity: ToastGravity.BOTTOM,
+                                    backgroundColor: Colors.red,
+                                    textColor: Colors.white,
+                                    fontSize: 20.0,
+                                  );
+                                } else {
+                                  Budgets budget = Budgets(
+                                      "",
+                                      ctrlBudgetName.text,
+                                      ctrlBudgetAmount.text);
+                                  bool result =
+                                      await BudgetServices.addBudget(budget);
+                                  if (result == true) {
+                                    Fluttertoast.showToast(
+                                      msg: "Add Budget Success",
+                                      toastLength: Toast.LENGTH_LONG,
+                                      gravity: ToastGravity.BOTTOM,
+                                      backgroundColor: Colors.green,
+                                      textColor: Colors.white,
+                                      fontSize: 20.0,
+                                    );
+                                    //clearForm();
+                                    //setState(() {
+                                    // isLoading = false;
+
+                                  } else {
+                                    Fluttertoast.showToast(
+                                      msg: "Failed! Try Again",
+                                      toastLength: Toast.LENGTH_LONG,
+                                      gravity: ToastGravity.BOTTOM,
+                                      backgroundColor: Colors.green,
+                                      textColor: Colors.white,
+                                      fontSize: 20.0,
+                                    );
+                                    setState(() {
+                                      isLoading = false;
+                                    });
+                                  }
+                                }
                                 Navigator.push(context,
                                     MaterialPageRoute(builder: (context) {
-                                  return BudgetManagementResult();
+                                  return HistoryBudgetPage();
                                 }));
                               },
                             ))

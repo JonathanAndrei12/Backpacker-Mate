@@ -53,7 +53,7 @@ class _AccountPageState extends State<AccountPage> {
               radius: 26,
               backgroundImage: NetworkImage(
                 img ??
-                  "https://firebasestorage.googleapis.com/v0/b/backpacker-mate.appspot.com/o/default%2Flogo.png?alt=media&token=4884ad3d-6466-4231-ad81-f6022290041a",
+                    "https://firebasestorage.googleapis.com/v0/b/backpacker-mate.appspot.com/o/default%2Flogo.png?alt=media&token=4884ad3d-6466-4231-ad81-f6022290041a",
               ),
             ),
           )
@@ -77,16 +77,15 @@ class _AccountPageState extends State<AccountPage> {
                           height: 70,
                         ),
                         CircleAvatar(
-                          radius: 102,
-                          backgroundColor: Colors.blue,
-                          child: CircleAvatar(
-                            radius: 100,
-                            backgroundImage: NetworkImage(
-                              img ??
-                              "https://firebasestorage.googleapis.com/v0/b/backpacker-mate.appspot.com/o/default%2Flogo.png?alt=media&token=4884ad3d-6466-4231-ad81-f6022290041a",
-                            ),
-                          )
-                        ),
+                            radius: 102,
+                            backgroundColor: Colors.blue,
+                            child: CircleAvatar(
+                              radius: 100,
+                              backgroundImage: NetworkImage(
+                                img ??
+                                    "https://firebasestorage.googleapis.com/v0/b/backpacker-mate.appspot.com/o/default%2Flogo.png?alt=media&token=4884ad3d-6466-4231-ad81-f6022290041a",
+                              ),
+                            )),
                         SizedBox(
                           height: 20,
                         ),

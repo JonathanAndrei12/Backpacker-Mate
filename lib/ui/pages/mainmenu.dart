@@ -35,17 +35,14 @@ class _MainMenuState extends State<MainMenu> {
           type: BottomNavigationBarType.fixed,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-                icon: Icon(CupertinoIcons.money_dollar_circle), 
+                icon: Icon(CupertinoIcons.money_dollar_circle),
                 label: 'Budget'),
             BottomNavigationBarItem(
-                icon: Icon(Icons.location_city), 
-                label: 'Hotel'),
+                icon: Icon(Icons.location_city), label: 'Hotel'),
             BottomNavigationBarItem(
-                icon: Icon(Icons.dehaze_rounded), 
-                label: 'History'),
+                icon: Icon(Icons.dehaze_rounded), label: 'History'),
             BottomNavigationBarItem(
-                icon: Icon(Icons.account_circle), 
-                label: 'My Account'),
+                icon: Icon(Icons.account_circle), label: 'My Account'),
           ],
           currentIndex: _selectedIndex,
           onTap: _onItemtapped,
