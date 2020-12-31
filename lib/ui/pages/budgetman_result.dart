@@ -83,7 +83,7 @@ class _BudgetManagementResultState extends State<BudgetManagementResult> {
                         ),
                         SizedBox(height: 35),
                         Text(
-                          "Budget Transport       :   " +
+                          "Budget Transport     :   " +
                               NumberFormat.currency(
                                       locale: 'id',
                                       symbol: 'Rp',
@@ -96,7 +96,7 @@ class _BudgetManagementResultState extends State<BudgetManagementResult> {
                         ),
                         SizedBox(height: 35),
                         Text(
-                          "Budget Kesehatan       :   " +
+                          "Budget Kesehatan    :   " +
                               NumberFormat.currency(
                                       locale: 'id',
                                       symbol: 'Rp',
@@ -109,7 +109,7 @@ class _BudgetManagementResultState extends State<BudgetManagementResult> {
                         ),
                         SizedBox(height: 35),
                         Text(
-                          "Budget Oleh-oleh       :   " +
+                          "Budget Oleh-oleh     :   " +
                               NumberFormat.currency(
                                       locale: 'id',
                                       symbol: 'Rp',
@@ -122,7 +122,7 @@ class _BudgetManagementResultState extends State<BudgetManagementResult> {
                         ),
                         SizedBox(height: 35),
                         Text(
-                          "Budget Urgent          :   " +
+                          "Budget Urgent           :   " +
                               NumberFormat.currency(
                                       locale: 'id',
                                       symbol: 'Rp',
