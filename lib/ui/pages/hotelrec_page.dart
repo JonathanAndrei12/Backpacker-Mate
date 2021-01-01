@@ -7,9 +7,9 @@ class HotelRecommendationPage extends StatefulWidget {
 }
 
 class _HotelRecommendationPageState extends State<HotelRecommendationPage> {
- final ctrlBudgetName = TextEditingController();
-  final ctrlBudgetAmount = TextEditingController();
-  bool isLoading = false;
+ var _currencies = ['Jawa Timur', 'Jawa Barat', 'Jawa Tengah'];
+  final _minimumPadding = 5.0;
+  var _currentItemSelected = 'Jawa Timur';
 
   @override
   Widget build(BuildContext context) {
@@ -22,136 +22,103 @@ class _HotelRecommendationPageState extends State<HotelRecommendationPage> {
           textAlign: TextAlign.center,
         ),
         iconTheme: IconThemeData(color: Colors.grey),
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.blue,
         elevation: 0,
       ),
+
+
       body: Container(
-          color: Colors.white,
-          child: ListView(
-            children: [
-              Container(
-                  margin: EdgeInsets.fromLTRB(10, 20, 10, 150),
-                  color: Colors.transparent,
-                  child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Align(
-                          alignment: Alignment
-                              .center, // Align however you like (i.e .centerRight, centerLeft)
-                          child: Icon(
-                            Icons.attach_money,
-                            color: Colors.blueAccent,
-                            size: 120.0,
-                          ),
-                        ),
-                        SizedBox(height: 50),
-                        Text(
-                          "Recommendation Hotel",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontFamily: "Arial",
-                              fontSize: 20),
-                        ),
-                        SizedBox(height: 1),
-                        TextFormField(
-                          controller: ctrlBudgetName,
-                          decoration: InputDecoration(
-                            //KALO MAU ICON PASANG DISINI
-                            hintText: "(Ex: Hotel Name)",
-                          ),
-                        ),
-                        SizedBox(height: 20),
-                        Text(
-                          "Budget",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontFamily: "Arial",
-                              fontSize: 20),
-                        ),
-                        SizedBox(height: 1),
-                        TextFormField(
-                          keyboardType: TextInputType.number,
-                          controller: ctrlBudgetAmount,
-                          decoration: InputDecoration(
-                            //KALO MAU ICON PASANG DISINI
-                            hintText: "(Ex:2000000)",
-                          ),
-                        ),
-                        SizedBox(height: 80),
-                        Align(
-                            alignment: Alignment.bottomCenter,
-                            child: RaisedButton(
-                              elevation: 5,
-                              padding: EdgeInsets.all(15),
-                              child: Container(
-                                width: 100,
-                                child: Text("Add Budget",
-                                    textAlign: TextAlign.center),
-                              ),
-                              textColor: Colors.white,
-                              color: Colors.blue,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              onPressed: () async {
-                                // double total =
-                                //     double.parse("ctrlBudgetAmount.text");
-                                // double makan = 20;
+        margin: EdgeInsets.all(_minimumPadding * 2),
+        child: Column(
+          children: <Widget>[
+            getImageAsset(),
+            Padding(
+              padding: EdgeInsets.only(
+                  top: _minimumPadding,
+                  bottom: _minimumPadding),
 
-                                if (ctrlBudgetName.text == "" ||
-                                    ctrlBudgetAmount.text == "") {
-                                  Fluttertoast.showToast(
-                                    msg: "Please Fill All Field!",
-                                    toastLength: Toast.LENGTH_LONG,
-                                    gravity: ToastGravity.BOTTOM,
-                                    backgroundColor: Colors.red,
-                                    textColor: Colors.white,
-                                    fontSize: 20.0,
-                                  );
-                                } else {
-                                  Budgets budget = Budgets(
-                                      "",
-                                      ctrlBudgetName.text,
-                                      ctrlBudgetAmount.text);
-                                  bool result =
-                                      await BudgetServices.addBudget(budget);
-                                  if (result == true) {
-                                    Fluttertoast.showToast(
-                                      msg: "Add Budget Success",
-                                      toastLength: Toast.LENGTH_LONG,
-                                      gravity: ToastGravity.BOTTOM,
-                                      backgroundColor: Colors.green,
-                                      textColor: Colors.white,
-                                      fontSize: 20.0,
-                                    );
-                                    //clearForm();
-                                    //setState(() {
-                                    // isLoading = false;
+              child: TextField(
+                keyboardType: TextInputType.number,
+                decoration: InputDecoration(
+                    labelText: 'Input Bugdet',
+                    hintText: '(Ex:2000000)',
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5.0))),
+              ),
+            ),
+            
+            Padding(
+              padding: EdgeInsets.only(
+                  top: _minimumPadding, bottom: _minimumPadding),
+              child: Row(
+                children: <Widget>[
+                  Expanded(
+                    child: TextField(
+                      decoration: InputDecoration(
+                          labelText: 'City',
+                          hintText: 'Surabaya',
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(5.0))),
+                    ),
+                  ),
 
-                                  } else {
-                                    Fluttertoast.showToast(
-                                      msg: "Failed! Try Again",
-                                      toastLength: Toast.LENGTH_LONG,
-                                      gravity: ToastGravity.BOTTOM,
-                                      backgroundColor: Colors.green,
-                                      textColor: Colors.white,
-                                      fontSize: 20.0,
-                                    );
-                                    setState(() {
-                                      isLoading = false;
-                                    });
-                                  }
-                                }
-                                Navigator.push(context,
-                                    MaterialPageRoute(builder: (context) {
-                                  return HistoryBudgetPage();
-                                }));
-                              },
-                            ))
-                      ]))
-            ],
-          )),
+                  Container(
+                    width: _minimumPadding * 5,
+                  ),
+                  
+                  Expanded(
+                    child: DropdownButton<String>(
+                      items: _currencies.map((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        );
+                      }).toList(),
+                      value: _currentItemSelected,
+                      onChanged: (String newValueSelected) {
+                        _onDropDownItemSelected(newValueSelected);
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            
+            Padding(
+                padding: EdgeInsets.only(left: 0.0, right: 0.0),
+                child: RaisedButton(
+                textColor: Colors.white,
+                color: Colors.blue,
+                child: Text("Add Hotel"),
+                onPressed: () {},
+                shape: new RoundedRectangleBorder(
+                borderRadius: new BorderRadius.circular(20.0),
+                ),
+              ),
+          ),          
+          ],
+        ),
+      ),
     );
+  }
+ 
+  Widget getImageAsset() {
+    AssetImage assetImage = AssetImage('images/hotel.png');
+    Image image = Image(
+      image: assetImage,
+      width: 125.0,
+      height: 125.0,
+    );
+ 
+    return Container(
+      child: image,
+      margin: EdgeInsets.all(_minimumPadding * 10),
+    );
+  }
+
+  void _onDropDownItemSelected(newValueSelected) {
+    setState(() {
+      this._currentItemSelected = newValueSelected;
+    });
   }
 }

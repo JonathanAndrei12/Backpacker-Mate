@@ -21,7 +21,7 @@ class _BudgetManagementPageState extends State<BudgetManagementPage> {
           textAlign: TextAlign.center,
         ),
         iconTheme: IconThemeData(color: Colors.grey),
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.blue,
         elevation: 0,
       ),
       body: Container(
@@ -150,7 +150,8 @@ class _BudgetManagementPageState extends State<BudgetManagementPage> {
                             ))
                       ]))
             ],
-          )),
+          )
+          ),
     );
   }
 }
