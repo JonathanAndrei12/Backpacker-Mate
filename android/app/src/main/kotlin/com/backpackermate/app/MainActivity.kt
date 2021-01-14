@@ -1,4 +1,4 @@
-package com.example.backpacker_mate
+package com.backpackermate.app
 
 import io.flutter.embedding.android.FlutterActivity
 import android.content.Context

@@ -30,27 +30,19 @@ class _HotelRecommendationPageState extends State<HotelRecommendationPage> {
       body: Container(
         margin: EdgeInsets.all(_minimumPadding * 2),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            getImageAsset(),
-            Padding(
-              padding: EdgeInsets.only(
-                  top: _minimumPadding,
-                  bottom: _minimumPadding),
-
-              child: TextField(
+            SizedBox(height: 150),
+            TextField(
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
                     labelText: 'Input Bugdet',
                     hintText: '(Ex:2000000)',
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(5.0))),
-              ),
             ),
             
-            Padding(
-              padding: EdgeInsets.only(
-                  top: _minimumPadding, bottom: _minimumPadding),
-              child: Row(
+            Row(
                 children: <Widget>[
                   Expanded(
                     child: TextField(
@@ -81,12 +73,8 @@ class _HotelRecommendationPageState extends State<HotelRecommendationPage> {
                     ),
                   ),
                 ],
-              ),
             ),
-            
-            Padding(
-                padding: EdgeInsets.only(left: 0.0, right: 0.0),
-                child: RaisedButton(
+            RaisedButton(
                 textColor: Colors.white,
                 color: Colors.blue,
                 child: Text("Add Hotel"),
@@ -94,8 +82,8 @@ class _HotelRecommendationPageState extends State<HotelRecommendationPage> {
                 shape: new RoundedRectangleBorder(
                 borderRadius: new BorderRadius.circular(20.0),
                 ),
-              ),
-          ),          
+            ),  
+            SizedBox(height: 150),      
           ],
         ),
       ),
@@ -103,16 +91,27 @@ class _HotelRecommendationPageState extends State<HotelRecommendationPage> {
   }
  
   Widget getImageAsset() {
-    AssetImage assetImage = AssetImage('images/hotel.png');
-    Image image = Image(
-      image: assetImage,
+    // AssetImage assetImage = AssetImage('images/hotel.png');
+    // Image image = Image(
+    //   image: assetImage,
+    //   width: 125.0,
+    //   height: 125.0,
+    // );
+ 
+    // return Container(
+    //   child: image,
+    //   margin: EdgeInsets.all(_minimumPadding * 10),
+    // );
+
+    return Container(
       width: 125.0,
       height: 125.0,
-    );
- 
-    return Container(
-      child: image,
       margin: EdgeInsets.all(_minimumPadding * 10),
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage("assets/images/hotel.png"),
+        )
+      ),
     );
   }
 
