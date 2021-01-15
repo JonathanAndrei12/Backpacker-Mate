@@ -9,6 +9,7 @@ class _BudgetManagementPageState extends State<BudgetManagementPage> {
   final ctrlBudgetName = TextEditingController();
   final ctrlBudgetAmount = TextEditingController();
   bool isLoading = false;
+  User _auth = FirebaseAuth.instance.currentUser;
 
   @override
   Widget build(BuildContext context) {
@@ -112,7 +113,8 @@ class _BudgetManagementPageState extends State<BudgetManagementPage> {
                                   Budgets budget = Budgets(
                                       "",
                                       ctrlBudgetName.text,
-                                      ctrlBudgetAmount.text);
+                                      ctrlBudgetAmount.text,
+                                      _auth.uid);
                                   bool result =
                                       await BudgetServices.addBudget(budget);
                                   if (result == true) {

@@ -169,7 +169,7 @@ class _BudgetManagementResultState extends State<BudgetManagementResult> {
     Widget continueButton = FlatButton(
       child: Text("Continue"),
       onPressed: () async {
-        bool result = await BudgetServices.deleteProduct("${widget.budget.id}");
+        bool result = await BudgetServices.deleteBudget("${widget.budget.id}");
         if (result == true) {
           Fluttertoast.showToast(
             msg: "Delete Products Success",

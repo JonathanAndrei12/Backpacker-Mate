@@ -6,6 +6,7 @@ class HistoryBudgetPage extends StatefulWidget {
 }
 
 class _HistoryBudgetPageState extends State<HistoryBudgetPage> {
+  User _auth = FirebaseAuth.instance.currentUser;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,18 +19,18 @@ class _HistoryBudgetPageState extends State<HistoryBudgetPage> {
             width: double.infinity,
             height: double.infinity,
             child: StreamBuilder<QuerySnapshot>(
-              stream: BudgetServices.budgetCollection.snapshots(),
+              stream: BudgetServices.budgetCollection.where("uid", isEqualTo: _auth.uid).snapshots(),
               builder: (BuildContext context,
                   AsyncSnapshot<QuerySnapshot> snapshot) {
                 if (snapshot.hasError) {
-                  return Text("Failed to get budget management  data!");
+                  return Text("Failed to get budget management data!");
                 }
 
                 return ListView(
                   children: snapshot.data.docs.map((DocumentSnapshot doc) {
                     return Budgetcard(
                       budget: Budgets(doc.data()['id'], doc.data()['name'],
-                          doc.data()['total']),
+                          doc.data()['total'], doc.data()['uid']),
                     );
                   }).toList(),
                 );

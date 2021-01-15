@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:backpacker_mate/models/models.dart';
 import 'package:backpacker_mate/extensions/extensions.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';

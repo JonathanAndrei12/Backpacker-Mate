@@ -2,14 +2,61 @@ part of "pages.dart";
 
 class HotelRecommendationPage extends StatefulWidget {
   @override
-  _HotelRecommendationPageState createState() =>
-      _HotelRecommendationPageState();
+  _HotelRecommendationPageState createState() => _HotelRecommendationPageState();
 }
 
 class _HotelRecommendationPageState extends State<HotelRecommendationPage> {
- var _currencies = ['Jawa Timur', 'Jawa Barat', 'Jawa Tengah'];
   final _minimumPadding = 5.0;
-  var _currentItemSelected = 'Jawa Timur';
+  var _onItemSelected = 'Jakarta';
+  var cities = ["Aceh", "Ambon", "Anyer", "Bali", "Balikpapan", "Bandar Lampung", "Bandung", "Bangka", "Banjarmasin", "Banten", "Banyuwangi", "Batam Island", "Berastagi", "Bintan Island", "Blitar", "Bogor", "Bukittinggi", "Cikarang", "Cirebon", "Irian Jaya / Papua", "Jakarta", "Jambi", "Kediri", "Kendari", "Ketapang", "Kupang", "Labuan Bajo", "Lombok", "Mabuun", "Magelang", "Makassar", "Malang", "Manado", "Medan", "Padang", "Palembang", "Palu", "Parapat", "Pekanbaru", "Pelabuhan Ratu", "Pontianak", "Puncak", "Samarinda", "Semarang", "Solo (Surakarta)", "Surabaya", "Tangerang", "Tarakan", "Trawas", "Yogyakarta"];
+
+  
+  // void initState() { 
+  //   getHotelsCities();
+  //   super.initState();
+  // }
+
+  // getHotelsCities(){
+  //   hotelsRef.get().then((QuerySnapshot snapshot){
+  //     snapshot.docs.forEach((DocumentSnapshot doc){
+  //       allHotels.add(doc.data);
+  //     });
+  //   });
+  //   var citiesCount = 0;
+  //   var citiesCountWhile = 0;
+  //   var whileBool = true;
+  //   for(var i = 0; i < allHotels.length; i++){
+  //     whileBool = true;
+  //     if (cities.isEmpty){
+  //       cities[citiesCount] = allHotels[i].city.toString();
+  //       citiesCount++;
+  //     }else{
+  //       while(whileBool == true){
+  //         if(citiesCountWhile == citiesCount - 1){
+  //           if(allHotels[i].city.toString() == cities[citiesCountWhile]){
+  //             citiesCountWhile = 0;
+  //             whileBool = false;
+  //           }else{
+  //             cities[citiesCount] = allHotels[i].city.toString();
+  //             citiesCountWhile = 0;
+  //             citiesCount++;
+  //             whileBool = false;
+  //           }
+  //         }else{
+  //           if(allHotels[i].city.toString() == cities[citiesCountWhile]){
+  //             citiesCountWhile++;
+  //           }else{
+  //             cities[citiesCount] = allHotels[i].city.toString();
+  //             citiesCountWhile = 0;
+  //             citiesCount++;
+  //             whileBool = false;
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+  //   citiesFix = cities;
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +73,6 @@ class _HotelRecommendationPageState extends State<HotelRecommendationPage> {
         elevation: 0,
       ),
 
-
       body: Container(
         margin: EdgeInsets.all(_minimumPadding * 2),
         child: Column(
@@ -41,38 +87,17 @@ class _HotelRecommendationPageState extends State<HotelRecommendationPage> {
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(5.0))),
             ),
-            
-            Row(
-                children: <Widget>[
-                  Expanded(
-                    child: TextField(
-                      decoration: InputDecoration(
-                          labelText: 'City',
-                          hintText: 'Surabaya',
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(5.0))),
-                    ),
-                  ),
-
-                  Container(
-                    width: _minimumPadding * 5,
-                  ),
-                  
-                  Expanded(
-                    child: DropdownButton<String>(
-                      items: _currencies.map((String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
-                        );
-                      }).toList(),
-                      value: _currentItemSelected,
-                      onChanged: (String newValueSelected) {
-                        _onDropDownItemSelected(newValueSelected);
-                      },
-                    ),
-                  ),
-                ],
+            DropdownButton<String>(
+              items: cities.map((String value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Text(value),
+                );
+              }).toList(),
+              value: _onItemSelected,
+              onChanged: (String newValueSelected) {
+                _onDropDownItemSelected(newValueSelected);
+              },
             ),
             RaisedButton(
                 textColor: Colors.white,
@@ -90,7 +115,7 @@ class _HotelRecommendationPageState extends State<HotelRecommendationPage> {
     );
   }
  
-  Widget getImageAsset() {
+  // Widget getImageAsset() {
     // AssetImage assetImage = AssetImage('images/hotel.png');
     // Image image = Image(
     //   image: assetImage,
@@ -103,21 +128,21 @@ class _HotelRecommendationPageState extends State<HotelRecommendationPage> {
     //   margin: EdgeInsets.all(_minimumPadding * 10),
     // );
 
-    return Container(
-      width: 125.0,
-      height: 125.0,
-      margin: EdgeInsets.all(_minimumPadding * 10),
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage("assets/images/hotel.png"),
-        )
-      ),
-    );
-  }
+  //   return Container(
+  //     width: 125.0,
+  //     height: 125.0,
+  //     margin: EdgeInsets.all(_minimumPadding * 10),
+  //     decoration: BoxDecoration(
+  //       image: DecorationImage(
+  //         image: AssetImage("assets/images/hotel.png"),
+  //       )
+  //     ),
+  //   );
+  // }
 
   void _onDropDownItemSelected(newValueSelected) {
     setState(() {
-      this._currentItemSelected = newValueSelected;
+      this._onItemSelected = newValueSelected;
     });
   }
 }

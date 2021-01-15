@@ -16,7 +16,7 @@ class BudgetServices {
     await Firebase.initializeApp();
 
     budgetDoc = await budgetCollection
-        .add({'id': "", 'name': budget.name, 'total': budget.total});
+        .add({'id': "", 'name': budget.name, 'total': budget.total, 'uid': budget.uid});
 
     if (budgetDoc.id != null) {
       ref = FirebaseStorage.instance.ref();
@@ -42,7 +42,7 @@ class BudgetServices {
   // }
   // }
 
-  static Future<bool> deleteProduct(budgetid) async {
+  static Future<bool> deleteBudget(budgetid) async {
     if (budgetid != "") {
       DocumentReference p =
           FirebaseFirestore.instance.collection("budgets").doc(budgetid);
