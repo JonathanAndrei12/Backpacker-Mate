@@ -9,7 +9,7 @@ class _HotelRecommendationPageState extends State<HotelRecommendationPage> {
   final _minimumPadding = 5.0;
   var _onItemSelected = 'Jakarta';
   var hotelsRef = FirebaseFirestore.instance.collection("hoteldata");
-  List<Hotels> allHotels;
+  // List<Hotels> allHotels;
   var cities = ["Aceh", "Ambon", "Anyer", "Bali", "Balikpapan", "Bandar Lampung", "Bandung", "Bangka", "Banjarmasin", "Banten", "Banyuwangi", "Batam Island", "Berastagi", "Bintan Island", "Blitar", "Bogor", "Bukittinggi", "Cikarang", "Cirebon", "Irian Jaya / Papua", "Jakarta", "Jambi", "Kediri", "Kendari", "Ketapang", "Kupang", "Labuan Bajo", "Lombok", "Mabuun", "Magelang", "Makassar", "Malang", "Manado", "Medan", "Padang", "Palembang", "Palu", "Parapat", "Pekanbaru", "Pelabuhan Ratu", "Pontianak", "Puncak", "Samarinda", "Semarang", "Solo (Surakarta)", "Surabaya", "Tangerang", "Tarakan", "Trawas", "Yogyakarta"];
 
   // void initState() { 
