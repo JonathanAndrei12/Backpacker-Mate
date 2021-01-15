@@ -8,54 +8,22 @@ class HotelRecommendationPage extends StatefulWidget {
 class _HotelRecommendationPageState extends State<HotelRecommendationPage> {
   final _minimumPadding = 5.0;
   var _onItemSelected = 'Jakarta';
+  var hotelsRef = FirebaseFirestore.instance.collection("hoteldata");
+  List<Hotels> allHotels;
   var cities = ["Aceh", "Ambon", "Anyer", "Bali", "Balikpapan", "Bandar Lampung", "Bandung", "Bangka", "Banjarmasin", "Banten", "Banyuwangi", "Batam Island", "Berastagi", "Bintan Island", "Blitar", "Bogor", "Bukittinggi", "Cikarang", "Cirebon", "Irian Jaya / Papua", "Jakarta", "Jambi", "Kediri", "Kendari", "Ketapang", "Kupang", "Labuan Bajo", "Lombok", "Mabuun", "Magelang", "Makassar", "Malang", "Manado", "Medan", "Padang", "Palembang", "Palu", "Parapat", "Pekanbaru", "Pelabuhan Ratu", "Pontianak", "Puncak", "Samarinda", "Semarang", "Solo (Surakarta)", "Surabaya", "Tangerang", "Tarakan", "Trawas", "Yogyakarta"];
 
-  
   // void initState() { 
-  //   getHotelsCities();
+  //   getHotels();
   //   super.initState();
   // }
 
-  // getHotelsCities(){
+  // getHotels(){
   //   hotelsRef.get().then((QuerySnapshot snapshot){
   //     snapshot.docs.forEach((DocumentSnapshot doc){
-  //       allHotels.add(doc.data);
+  //       Hotels hotel = Hotels(doc.data()['hotel_id'].toString(), doc.data()['hotel_name'].toString(), doc.data()['address'].toString(), doc.data()['city'].toString(), doc.data()['state'].toString(), doc.data()['star_rating'].toString(), doc.data()['url'].toString(), doc.data()['photo1'].toString(), doc.data()['photo2'].toString(), doc.data()['photo3'].toString(), doc.data()['photo4'].toString(), doc.data()['photo5'].toString(), doc.data()['overview'].toString(), doc.data()['number_of_reviews'].toString(), doc.data()['rating_average'].toString(), doc.data()['price'].toString());
+  //       allHotels.add(hotel);
   //     });
   //   });
-  //   var citiesCount = 0;
-  //   var citiesCountWhile = 0;
-  //   var whileBool = true;
-  //   for(var i = 0; i < allHotels.length; i++){
-  //     whileBool = true;
-  //     if (cities.isEmpty){
-  //       cities[citiesCount] = allHotels[i].city.toString();
-  //       citiesCount++;
-  //     }else{
-  //       while(whileBool == true){
-  //         if(citiesCountWhile == citiesCount - 1){
-  //           if(allHotels[i].city.toString() == cities[citiesCountWhile]){
-  //             citiesCountWhile = 0;
-  //             whileBool = false;
-  //           }else{
-  //             cities[citiesCount] = allHotels[i].city.toString();
-  //             citiesCountWhile = 0;
-  //             citiesCount++;
-  //             whileBool = false;
-  //           }
-  //         }else{
-  //           if(allHotels[i].city.toString() == cities[citiesCountWhile]){
-  //             citiesCountWhile++;
-  //           }else{
-  //             cities[citiesCount] = allHotels[i].city.toString();
-  //             citiesCountWhile = 0;
-  //             citiesCount++;
-  //             whileBool = false;
-  //           }
-  //         }
-  //       }
-  //     }
-  //   }
-  //   citiesFix = cities;
   // }
 
   @override
@@ -99,6 +67,10 @@ class _HotelRecommendationPageState extends State<HotelRecommendationPage> {
                 _onDropDownItemSelected(newValueSelected);
               },
             ),
+            // Container(
+            //   padding: EdgeInsets.all(5),
+            //   child: Text(allHotels.elementAt(0).hotel_id),
+            // ),
             RaisedButton(
                 textColor: Colors.white,
                 color: Colors.blue,
