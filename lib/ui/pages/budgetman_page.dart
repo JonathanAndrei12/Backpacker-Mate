@@ -12,6 +12,18 @@ class _BudgetManagementPageState extends State<BudgetManagementPage> {
   User _auth = FirebaseAuth.instance.currentUser;
 
   @override
+  void dispose() {
+    ctrlBudgetName.dispose();
+    ctrlBudgetAmount.dispose();
+    super.dispose();
+  }
+
+  void clearForm() {
+    ctrlBudgetName.clear();
+    ctrlBudgetAmount.clear();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -126,7 +138,7 @@ class _BudgetManagementPageState extends State<BudgetManagementPage> {
                                       textColor: Colors.white,
                                       fontSize: 20.0,
                                     );
-                                    //clearForm();
+                                    clearForm();
                                     //setState(() {
                                     // isLoading = false;
 

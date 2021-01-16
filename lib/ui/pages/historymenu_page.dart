@@ -12,7 +12,7 @@ class _HistoryPageState extends State<HistoryPage> {
         debugShowCheckedModeBanner: false,
         home: Scaffold(
           appBar: AppBar(
-            title: Text("History"),
+            title: Text(""),
             backgroundColor: Colors.blue,
           ),
           body: Container(
@@ -71,7 +71,7 @@ class _HistoryPageState extends State<HistoryPage> {
                                 onPressed: () {
                                   Navigator.push(context,
                                       MaterialPageRoute(builder: (context) {
-                                    return SignUpPages();
+                                    return HistoryHotelRecPage();
                                   }));
                                 },
                               ),

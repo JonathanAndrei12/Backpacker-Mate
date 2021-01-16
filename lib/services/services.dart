@@ -10,3 +10,4 @@ import 'package:image_picker/image_picker.dart';
 part 'auth_services.dart';
 part 'user_services.dart';
 part 'budget_services.dart';
+part 'hotelRec_services.dart';

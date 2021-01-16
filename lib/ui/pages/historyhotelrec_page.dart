@@ -1,17 +1,17 @@
-part of "pages.dart";
+part of 'pages.dart';
 
-class HistoryBudgetPage extends StatefulWidget {
+class HistoryHotelRecPage extends StatefulWidget {
   @override
-  _HistoryBudgetPageState createState() => _HistoryBudgetPageState();
+  _HistoryHotelRecPageState createState() => _HistoryHotelRecPageState();
 }
 
-class _HistoryBudgetPageState extends State<HistoryBudgetPage> {
+class _HistoryHotelRecPageState extends State<HistoryHotelRecPage> {
   User _auth = FirebaseAuth.instance.currentUser;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Budget Management History"),
+        title: Text("Hotel Recommendation History"),
       ),
       body: Stack(
         children: [
@@ -19,7 +19,7 @@ class _HistoryBudgetPageState extends State<HistoryBudgetPage> {
             width: double.infinity,
             height: double.infinity,
             child: StreamBuilder<QuerySnapshot>(
-              stream: BudgetServices.budgetCollection.where("uid", isEqualTo: _auth.uid).snapshots(),
+              stream: HotelRecServices.hotelRecCollection.where("uid", isEqualTo: _auth.uid).snapshots(),
               builder: (BuildContext context,
                   AsyncSnapshot<QuerySnapshot> snapshot) {
                 if (snapshot.hasError) {
@@ -28,9 +28,9 @@ class _HistoryBudgetPageState extends State<HistoryBudgetPage> {
 
                 return ListView(
                   children: snapshot.data.docs.map((DocumentSnapshot doc) {
-                    return Budgetcard(
-                      budget: Budgets(doc.data()['id'], doc.data()['name'],
-                          doc.data()['total'], doc.data()['uid']),
+                    return HotelRecCard(
+                      hotelRec: HotelsRec(doc.data()['id'], doc.data()['budget'],
+                          doc.data()['city'], doc.data()['uid']),
                     );
                   }).toList(),
                 );

@@ -6,7 +6,7 @@ class MainMenu extends StatefulWidget {
 }
 
 class _MainMenuState extends State<MainMenu> {
-  int _selectedIndex = 2;
+  int _selectedIndex = 3;
   static List<Widget> _widgetOptions = <Widget>[
     BudgetManagementPage(),
     HotelRecommendationPage(),
