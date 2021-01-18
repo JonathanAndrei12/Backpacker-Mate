@@ -6,6 +6,26 @@ class SignMenu extends StatefulWidget {
 }
 
 class _SignMenuState extends State<SignMenu> {
+  
+  User _auth;
+
+  Future <String> checkUser() async {
+    await Firebase.initializeApp();
+    _auth = FirebaseAuth.instance.currentUser; 
+    if(_auth != null){
+      // wrong call in wrong place!
+      return Navigator.of(context).pushReplacement(MaterialPageRoute(
+        builder: (context) => MainMenu()
+      ));
+    }
+  }
+
+  @override
+  void initState() { 
+    super.initState();
+    checkUser();
+  }
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
