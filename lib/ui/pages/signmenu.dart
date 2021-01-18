@@ -8,7 +8,9 @@ class SignMenu extends StatefulWidget {
 class _SignMenuState extends State<SignMenu> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(
           appBar: AppBar(
@@ -90,6 +92,8 @@ class _SignMenuState extends State<SignMenu> {
                   ],
                 ),
               )),
-        ));
+        )
+      )
+    );
   }
 }
